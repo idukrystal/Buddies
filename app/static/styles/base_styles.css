@@ -1,0 +1,10 @@
+input {
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    margin: 15px auto;
+}
+
+.warning {
+    color: red;
+} 

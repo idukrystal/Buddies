@@ -1,0 +1,28 @@
+{% extends "base_layout.html" %}
+{% block title %}Log-in{% endblock %}
+{% block content %}
+<main>
+    <h3>{% block header_text  %}Log-in{% endblock %}</h3>
+    <div>
+      {% if error %}
+      <p class="warning"><i>{{ msg }}</i></p>
+      {% endif %}
+      {% if success  %}
+      <p class="info"><i>{{ msg }}</i></p>
+      {% endif %}
+        <form action="" method="post">
+            <input type="text" name="user" id="user" placeholder="Email or UserName" value="{{ user }}">
+            <input type="password" name="password" id="password" placeholder="password">
+	    {% block additional_fields %}
+	    {% endblock %}
+	    {% block form_submit %}
+            <input type="submit" value="login">
+	    {% endblock %}
+        </form>
+        {% block form_footer %}
+      <p>Don't have an account, <a href="/logup">Log-up</a></p>
+           <p>Can't remember password, <a href="/reset_password">Reset it</a></p>
+        {% endblock %}
+    </div>
+</main>
+{% endblock %}

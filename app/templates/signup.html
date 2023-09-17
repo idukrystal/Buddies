@@ -1,0 +1,12 @@
+{% extends "login.html" %}
+{% block title %}Log-up{% endblock %}
+{% block header_text %}Log-up{% endblock %}
+{% block additional_fields %}
+     <input type="password" name="password_verification" placeholder="Re-type password" id="password_verification">
+{% endblock %}
+{% block form_submit  %}
+     <input type="submit" value="logup">
+{% endblock %}
+{% block form_footer %}
+     <p>Have an account, <a href="/login">Log-In</a></p>
+ {% endblock %}
