@@ -4,6 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy_utils import database_exists
 from models.user import Base, User
 
 
@@ -14,9 +15,12 @@ class DB:
     def __init__(self) -> None:
         """Initialize a new DB instance
         """
-        self._engine = create_engine("sqlite:///a.db", echo=False)
-        Base.metadata.drop_all(self._engine)
-        Base.metadata.create_all(self._engine)
+        if not database_exists("sqlite:///users.db"):
+            self._engine = create_engine("sqlite:///users.db", echo=False)
+            Base.metadata.drop_all(self._engine)
+            Base.metadata.create_all(self._engine)
+        else:
+            self._engine = create_engine("sqlite:///users.db", echo=False)
         self.__session = None
 
     @property
